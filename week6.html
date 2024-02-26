@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week6.html</title>
+    <style>
+   body{
+    background-image:url("pexels-pixabay-531880.jpg") ;
+    background-position: center;
+    
+
+   }
+   .container1{
+    max-width: 400px;
+    background: transparent;
+    backdrop-filter: blurr(25px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+        form{
+            max-width:400px;
+            margin:0 auto;
+            
+
+        }
+        input{
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            padding: 8px;
+            width:100%;
+        }
+        button {
+            padding: 10px 175px;
+            background-color: #4CAF50;
+            border-radius: 3px solid white;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.5s;
+          }
+        button:hover{
+            background-color: red;
+            color:white;
+            opacity: 0.5;
+        } 
+    </style>
+    <script>
+        function week6(){
+            const name =document.forms.regi.Name.value;
+            const email=document.forms.regi.email.value;
+            const age =document.forms.regi.age.value;
+            const idno=document.forms.regi.idno.value;
+            const pincode=document.forms.regi.pincode.value;
+            const phone=document.forms.regi.phone.value;
+            const date=document.forms.regi.date.value;
+            console.log(name,email,age,idno,pincode,phone,date);
+
+            function dateIsValid(date) {
+                return date instanceof Date && !isNaN(date);
+              }
+
+
+            if(name ==="" ||name.includes('0')||name.includes('1')||name.includes('2')||name.includes('3')||name.includes('4')||name.includes('5')||name.includes('6')||name.includes('7')||name.includes('8')||name.includes('9')){
+                window.alert 
+                ("Please enter your name properly."); 
+            name.focus(); 
+            return false;
+            }
+
+            if(email===""||!email.includes('@')){
+                window.alert("please enter the correct mail");
+                email.focus();
+                return false;
+            }
+            if(pincode===""||pincode.length!=6){
+                window.alert("please enter the correct pincode");
+                pincode.focus();
+                return false;
+            }
+            if(idno==""||idno[2]!='2'||idno[3]!=2){
+                window.alert("please enter the correct registration number of batch 2022");
+                idno.focus();
+                return false;
+            }
+            if(phone===""||phone[0]===0||phone.length!=10){
+                window.alert("please enter the valid phone number");
+                phone.focus();
+                return false;
+
+            }
+            if(date===""||dateIsValid(new Date(date))){
+                window.alert('please enter the valid date');
+                date.focus();
+                return false;
+
+            }
+
+
+            return true;
+            
+           
+
+        }
+
+
+       
+    </script>
+</head>
+<body>
+  <div class="container">
+    <form name="regi" onsubmit="return week6()">
+        <h1> REGESTRATION FORM</h1>
+        <input type="text" name="Name" placeholder="Name" required>
+        <input type="number" name="age" placeholder="Age" required>
+        <input type="number" name="phone" placeholder="PhoneNumber" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="pincode" placeholder="PIN code" required>
+        <input type="text" name="date" placeholder="Date of birth" required>
+        <input type="text" name="idno" placeholder="Registration Number" required>
+        <div class="error" name="errorMsg"></div>
+        <button type="submit">Register</button>
+      </form>
+  </div>
+       
+</body>
+</html>
